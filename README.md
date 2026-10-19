@@ -14,11 +14,11 @@
 </p>
 
 <p align="center">
-  <sup>1</sup><b>School of Computer Science and Technology, Xinjiang University</b>
+  <sup>1</sup>School of Computer Science and Technology, Xinjiang University
   <br>
-  <sup>2</sup><b>Joint International Research Laboratory of Silk Road Multilingual Cognitive Computing</b>
+  <sup>2</sup>Joint International Research Laboratory of Silk Road Multilingual Cognitive Computing
   <br>
-  <sup>3</sup><b>Xinjiang Key Laboratory of Signal Detection and Processing</b>
+  <sup>3</sup>Xinjiang Key Laboratory of Signal Detection and Processing
 </p>
 
 <p align="center">

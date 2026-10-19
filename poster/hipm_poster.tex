@@ -30,7 +30,7 @@
 \newtcolorbox{softpanel}[1][]{enhanced,colback=Rose,colframe=BurgundyMid,boxrule=.7mm,
  arc=4mm,left=7mm,right=7mm,top=5mm,bottom=5mm,before upper={\BodyFont\RaggedRight},#1}
 \newtcolorbox{notepanel}[1][]{enhanced,colback=NoteGray,colframe=Rule,boxrule=.6mm,
- arc=4mm,left=8mm,right=8mm,top=6mm,bottom=6mm,
+ arc=4mm,left=8mm,right=8mm,top=4mm,bottom=4mm,
  before upper={\color{NoteInk}\fontsize{25}{32}\selectfont\RaggedRight},#1}
 \newcommand{\vgap}{\vspace{6mm}}
 \newcommand{\pill}[1]{\tikz[baseline=(x.base)]\node[fill=Rose,draw=BurgundyMid,
@@ -152,7 +152,7 @@ $+$ NLI + meta-classifier & \best{86.21} & \best{90.46} & \best{81.96}\\\bottomr
 A 3.28-point lead over second place. Phase 1 and blind Phase 2 differ by only 0.12, demonstrating stability across the domain shift.
 \end{posterblock}
 \end{minipage}
-\vspace{5mm}
+\vspace{4mm}
 \begin{posterblock}{Transferable Lessons}
 \begin{minipage}[t]{.48\linewidth}
 \textbf{Track 1: align with error density.} Higher image resolution, extra epochs, supervised chain-of-thought, OCR, and suppression rules did not yield consistent gains. Diverse union members recover complementary minority cases.
@@ -162,22 +162,22 @@ A 3.28-point lead over second place. Phase 1 and blind Phase 2 differ by only 0.
 \end{minipage}\end{posterblock}
 \vspace{5mm}
 \begin{notepanel}
-\begin{minipage}[t]{.40\linewidth}
+\begin{minipage}[t]{.34\linewidth}
 \textbf{ABSTRACT IN BRIEF}\par
-DualFaith verifies whether scientific statements are supported by experimental figures/tables or cited papers. Its two specialized pipelines combine multimodal minority-recall ensembling with frozen evidence retrieval and domain-robust label stacking.
+DualFaith checks whether scientific statements are supported by experimental figures, tables or cited papers, pairing multimodal minority-recall ensembling with frozen evidence retrieval and domain-robust label stacking.
 \end{minipage}\hfill
-\begin{minipage}[t]{.28\linewidth}
+\begin{minipage}[t]{.25\linewidth}
 \textbf{LIMITATIONS}\par
-Track 1 includes partial recipe reconstruction and PEM nondeterminism. Track 2 may inherit stylistic cues from claim-only modeling, and its development set contains only 433 records. Broader evaluation on human-written claims remains future work.
+Track 1 involves partial recipe reconstruction and PEM nondeterminism. Track 2 may inherit claim-only stylistic cues and has just 433 development records.
 \end{minipage}\hfill
-\begin{minipage}[t]{.17\linewidth}
+\begin{minipage}[t]{.22\linewidth}
 \textbf{ACKNOWLEDGMENTS}\par
 Funded by the Xinjiang Talent Development Fund (Grant No. XJRC-2025-KJ-PY-KJLJ-051). We thank the NLPCC-2026 Task 10 organizers and evaluators.
 \end{minipage}\hfill
-\begin{minipage}[t]{.11\linewidth}\centering
-\textbf{WATCH THE TALK}\par\vspace{2.5mm}
-\includegraphics[height=42mm]{qr-talk.png}\par\vspace{1.5mm}
-{\fontsize{14}{17}\selectfont winbeau.github.io/DualFaith}
+\begin{minipage}[t]{.12\linewidth}\centering
+\textbf{WATCH THE TALK}\par\vspace{3mm}
+\includegraphics[height=50mm]{qr-talk.png}\par\vspace{2mm}
+{\fontsize{16}{20}\selectfont winbeau.github.io/DualFaith}
 \end{minipage}
 \end{notepanel}
 \vfill

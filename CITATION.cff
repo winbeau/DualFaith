@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "If you use these materials, please cite the paper below."
+title: "DualFaith at NLPCC-2026 Task 10: Faithfulness Verification for Scientific Reports against Experimental Results and Citation Evidence"
+abstract: >-
+  DualFaith is the Team XJDX_001 system for NLPCC-2026 Shared Task 10,
+  Reliability of AI-Assisted Scientific Reporting. Track 1 fine-tunes
+  Qwen3-VL-8B-Instruct with LoRA and a recall-additive union ensemble for
+  sentence-level faithfulness labeling against figures and tables, ranking
+  second of 11 teams. Track 2 freezes a fused four-reranker evidence list and
+  stacks a DeBERTa evidence reader, a claim-only classifier, an external NLI
+  posterior and a logistic-regression meta-classifier for citation support,
+  ranking first of 15 teams.
+authors:
+  - family-names: Zhao
+    given-names: Wenbiao
+    affiliation: "School of Computer Science and Technology, Xinjiang University"
+  - family-names: Shi
+    given-names: Longkun
+    affiliation: "School of Computer Science and Technology, Xinjiang University"
+  - family-names: Zuo
+    given-names: Zicheng
+    affiliation: "School of Computer Science and Technology, Xinjiang University"
+  - family-names: Tohti
+    given-names: Turdi
+    affiliation: "School of Computer Science and Technology, Xinjiang University"
+    email: turdy@xju.edu.cn
+keywords:
+  - scientific report faithfulness
+  - multimodal claim verification
+  - citation faithfulness
+  - domain shift
+  - ensemble learning
+license: CC-BY-4.0
+repository-code: "https://github.com/winbeau/DualFaith"
+url: "https://winbeau.github.io/DualFaith/"
+preferred-citation:
+  type: conference-paper
+  title: "DualFaith at NLPCC-2026 Task 10: Faithfulness Verification for Scientific Reports against Experimental Results and Citation Evidence"
+  authors:
+    - family-names: Zhao
+      given-names: Wenbiao
+    - family-names: Shi
+      given-names: Longkun
+    - family-names: Zuo
+      given-names: Zicheng
+    - family-names: Tohti
+      given-names: Turdi
+  collection-title: "Natural Language Processing and Chinese Computing (NLPCC 2026)"
+  collection-type: proceedings
+  publisher:
+    name: Springer
+  year: 2026
+  notes: "To appear"

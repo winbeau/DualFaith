@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DualFaith — NLPCC-2026 Task 10</title>
+<meta name="description" content="DualFaith: Faithfulness Verification for Scientific Reports against Experimental Results and Citation Evidence. Team XJDX_001 at NLPCC-2026 Shared Task 10 — Track 1 2nd of 11, Track 2 1st of 15.">
+<meta property="og:title" content="DualFaith at NLPCC-2026 Task 10">
+<meta property="og:description" content="Faithfulness Verification for Scientific Reports against Experimental Results and Citation Evidence. Track 1: 2nd of 11. Track 2: 1st of 15.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://winbeau.github.io/DualFaith/">
+<meta property="og:image" content="https://winbeau.github.io/DualFaith/assets/talk-thumb.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128220;</text></svg>">
+<style>
+  :root{
+    --bg:#FBF8F6; --surface:#FFFFFF; --ink:#241D1E; --muted:#655F60;
+    --accent:#841B20; --accent-soft:#F2E3E4; --rule:#E0D3D4;
+    --shadow:0 1px 2px rgba(36,29,30,.06), 0 8px 24px rgba(36,29,30,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#17100F; --surface:#201817; --ink:#F0E8E7; --muted:#AFA3A3;
+      --accent:#E8949A; --accent-soft:#3A2224; --rule:#3A2E2E;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:0 16px}
+  a{color:var(--accent)}
+
+  /* ---------- header ---------- */
+  header{
+    background:linear-gradient(170deg,#841B20 0%,#5B1015 100%);
+    color:#fff; padding:40px 0 34px; text-align:center;
+  }
+  .venue{
+    display:inline-block; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    font-weight:700; border:1px solid rgba(255,255,255,.45); border-radius:999px;
+    padding:5px 14px; margin-bottom:18px;
+  }
+  header h1{font-size:clamp(30px,7vw,46px); line-height:1.1; margin:0 0 10px; letter-spacing:-.02em}
+  header .sub{font-size:clamp(15px,3.4vw,20px); font-weight:400; opacity:.93; margin:0 auto; max-width:30em}
+  .authors{margin:22px 0 4px; font-size:16px; font-weight:600; line-height:1.9}
+  .authors sup{font-weight:400}
+  .affil{font-size:13px; opacity:.82; line-height:1.6; margin:8px auto 0; max-width:34em}
+  .note{font-size:12px; opacity:.72; margin-top:8px}
+
+  /* ---------- buttons ---------- */
+  .links{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:26px}
+  .btn{
+    display:inline-flex; align-items:center; gap:7px;
+    background:rgba(255,255,255,.12); color:#fff; text-decoration:none;
+    border:1px solid rgba(255,255,255,.4); border-radius:999px;
+    padding:9px 18px; font-size:15px; font-weight:600;
+    transition:background .15s, transform .15s;
+  }
+  .btn:hover{background:rgba(255,255,255,.24)}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{background:#fff; color:#841B20; border-color:#fff}
+  .btn.primary:hover{background:#F2E3E4}
+
+  /* ---------- scoreboard ---------- */
+  .scores{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:-26px auto 0; position:relative}
+  @media (max-width:560px){ .scores{grid-template-columns:1fr} }
+  .score{
+    background:var(--surface); border:1px solid var(--rule); border-radius:14px;
+    padding:18px 20px; box-shadow:var(--shadow);
+  }
+  .score .track{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700}
+  .score .rank{font-size:26px; font-weight:800; color:var(--accent); margin:6px 0 2px; letter-spacing:-.01em}
+  .score .det{font-size:14px; color:var(--muted)}
+
+  /* ---------- sections ---------- */
+  section{padding:46px 0 10px}
+  h2{
+    font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
+    font-weight:700; margin:0 0 18px; padding-bottom:10px; border-bottom:1px solid var(--rule);
+  }
+  h3{font-size:17px; margin:30px 0 10px}
+  p{margin:0 0 15px}
+  .lede{font-size:18px}
+  .board{
+    background:var(--accent-soft); border:1px solid var(--rule); border-left:3px solid var(--accent);
+    border-radius:10px; padding:12px 16px; font-size:15px;
+  }
+
+  /* ---------- video ---------- */
+  .player{
+    background:#000; border-radius:14px; overflow:hidden;
+    box-shadow:var(--shadow); border:1px solid var(--rule); line-height:0;
+  }
+  .player video{width:100%; height:auto; display:block}
+  .vmeta{
+    display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center;
+    margin-top:12px; font-size:14px; color:var(--muted);
+  }
+
+  /* ---------- tables ---------- */
+  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 0 14px}
+  table{border-collapse:collapse; width:100%; font-size:15px; font-variant-numeric:tabular-nums}
+  th,td{padding:9px 12px; text-align:right; border-bottom:1px solid var(--rule); white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  thead th{font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:700}
+  tr.ours td{background:var(--accent-soft); font-weight:700}
+  tr.ours td:first-child{border-left:3px solid var(--accent)}
+  caption{caption-side:top; text-align:left; font-weight:700; font-size:15px; padding-bottom:8px}
+
+  /* ---------- figures ---------- */
+  figure{margin:0 0 26px}
+  figure img{
+    width:100%; height:auto; display:block; border-radius:12px;
+    border:1px solid var(--rule); background:var(--surface);
+  }
+  figcaption{font-size:14px; color:var(--muted); margin-top:9px}
+
+  /* ---------- bibtex ---------- */
+  .cite{position:relative}
+  pre{
+    background:var(--surface); border:1px solid var(--rule); border-radius:12px;
+    padding:16px; overflow-x:auto; font-size:13px; line-height:1.6; margin:0;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  #copy{
+    position:absolute; top:10px; right:10px; cursor:pointer;
+    background:var(--bg); color:var(--ink); border:1px solid var(--rule);
+    border-radius:7px; padding:5px 11px; font-size:12px; font-weight:600; font-family:inherit;
+  }
+  #copy:hover{border-color:var(--accent); color:var(--accent)}
+
+  footer{
+    margin-top:50px; padding:26px 0 40px; border-top:1px solid var(--rule);
+    font-size:14px; color:var(--muted); text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="venue">NLPCC 2026 · Shared Task 10 · Team XJDX_001</div>
+    <h1>DualFaith</h1>
+    <p class="sub">Faithfulness Verification for Scientific Reports against Experimental Results and Citation Evidence</p>
+
+    <div class="authors">
+      Wenbiao Zhao<sup>1,*</sup> &nbsp; Longkun Shi<sup>1,*</sup> &nbsp;
+      Zicheng Zuo<sup>1,2,3</sup> &nbsp; Turdi Tohti<sup>1,2,3,†</sup>
+    </div>
+    <div class="affil">
+      <sup>1</sup>School of Computer Science and Technology, Xinjiang University<br>
+      <sup>2</sup>Joint International Research Laboratory of Silk Road Multilingual Cognitive Computing<br>
+      <sup>3</sup>Xinjiang Key Laboratory of Signal Detection and Processing
+    </div>
+    <div class="note">*Equal contribution &nbsp;·&nbsp; †Corresponding author</div>
+
+    <nav class="links">
+      <a class="btn primary" href="#talk">▶ Watch the talk</a>
+      <a class="btn" href="DualFaith-NLPCC2026-Task10-paper.pdf">Paper</a>
+      <a class="btn" href="DualFaith-NLPCC2026-Task10-poster-EN.pdf">Poster</a>
+      <a class="btn" href="DualFaith-NLPCC2026-Task10-slides.pptx">Slides</a>
+      <a class="btn" href="https://nlp2ct.github.io/NLPCC-2026-Task10-Science/leaderboard.html">Leaderboard</a>
+      <a class="btn" href="https://github.com/winbeau/DualFaith">Code</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="scores">
+    <div class="score">
+      <div class="track">Track 1 · Experimental evidence</div>
+      <div class="rank">2nd of 11 teams</div>
+      <div class="det">Final 68.79 — 0.11 behind first, and the highest Phase-1 Macro-F1 (57.54) of any team.</div>
+    </div>
+    <div class="score">
+      <div class="track">Track 2 · Citation evidence</div>
+      <div class="rank">1st of 15 teams</div>
+      <div class="det">Final 86.27 — a 3.28-point lead, stable across the Phase-2 domain shift (±0.12).</div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="talk">
+    <h2>Oral presentation</h2>
+    <div class="player">
+      <video controls playsinline preload="metadata" poster="assets/talk-thumb.jpg">
+        <source src="DualFaith-NLPCC2026-Task10-talk.mp4" type="video/mp4">
+        Your browser cannot play this video inline.
+        <a href="DualFaith-NLPCC2026-Task10-talk.mp4">Download the MP4 instead.</a>
+      </video>
+    </div>
+    <div class="vmeta">
+      <span>10-minute oral presentation · MP4, ~49&nbsp;MB</span>
+      <a href="DualFaith-NLPCC2026-Task10-talk.mp4" download>Download the video ↓</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Overview</h2>
+    <p class="lede">
+      NLPCC-2026 Shared Task 10 asks whether a fluent scientific statement is actually <em>supported</em>
+      by its evidence. <strong>Track 1</strong> assigns one of five faithfulness labels to each sentence of a
+      results paragraph given the referenced figure or table. <strong>Track 2</strong> assigns one of four
+      citation-support labels to an atomic claim given the full text of the cited paper, and returns the
+      supporting paragraphs.
+    </p>
+    <p>
+      The two tracks fail for different reasons, so DualFaith is two specialized pipelines rather than one
+      model. Track 1 is bottlenecked by <strong>minority-class recall under a paragraph-level exact-match
+      metric</strong>: a single missed minority sentence invalidates a whole paragraph. Track 2 is bottlenecked by
+      the <strong>coupling between retrieval and labeling under domain shift</strong>. Each pipeline is designed
+      around its own bottleneck.
+    </p>
+
+    <figure>
+      <img src="assets/track1.png" alt="Track 1 system diagram: long-tail resampling, density-matched augmentation, softmin-PEM loss, and a union ensemble over five Qwen3-VL members.">
+      <figcaption>
+        <strong>Track 1.</strong> Qwen3-VL-8B-Instruct is adapted with LoRA (<em>r</em>=16, α=32) for sentence-level
+        classification, with the vision tower frozen. Five heterogeneous members are combined as a
+        <em>minority-label union</em> rather than by probability averaging. Raising minority predictions from 46 to 399
+        lifts the Phase-1 score from 18.85 to 50.61 — recall, not suppression, is the bottleneck.
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/track2.png" alt="Track 2 system diagram: BM25 retrieval, four fused rerankers, frozen top-three evidence, and a stacked label-side meta-classifier.">
+      <figcaption>
+        <strong>Track 2.</strong> BM25 retrieves candidates; two DeBERTa cross-encoders, MonoT5-large and
+        Qwen3-Reranker-4B are min–max normalized per record and equally fused into a <em>fixed top-three evidence
+        list</em>. That list is then frozen, and all later gains come from the label side: a DeBERTa evidence reader,
+        a claim-only classifier, an external NLI posterior, and a logistic-regression meta-classifier.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Official results</h2>
+    <p class="board">
+      Scores below are the final official figures. The complete standings for both tracks are published on the
+      <a href="https://nlp2ct.github.io/NLPCC-2026-Task10-Science/leaderboard.html">NLPCC-2026 Task 10 official leaderboard&nbsp;↗</a>.
+    </p>
+
+    <div class="scroll">
+      <table>
+        <caption>Track 1 — multimodal sentence verification (top 5 of 11 teams)</caption>
+        <thead><tr><th>System</th><th>Final</th><th>Phase 1</th><th>Phase 2</th></tr></thead>
+        <tbody>
+          <tr><td>SUAT-NLP</td><td>68.90</td><td>51.85</td><td>85.95</td></tr>
+          <tr class="ours"><td>DualFaith (XJDX_001)</td><td>68.79</td><td>50.61</td><td>86.97</td></tr>
+          <tr><td>BIT-TrustAI</td><td>57.99</td><td>44.09</td><td>71.88</td></tr>
+          <tr><td>ZZUNLP_Han</td><td>55.47</td><td>42.44</td><td>68.50</td></tr>
+          <tr><td>YNU-HPCC</td><td>46.16</td><td>31.93</td><td>60.39</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Second place by <strong>0.11 points</strong>, with the best Phase-2 score among the top five.</p>
+
+    <div class="scroll">
+      <table>
+        <caption>Track 2 — citation support (top 5 of 15 teams)</caption>
+        <thead><tr><th>System</th><th>Final</th><th>Macro-F1</th><th>Joint@3</th><th>Phase 1</th><th>Phase 2</th></tr></thead>
+        <tbody>
+          <tr class="ours"><td>DualFaith (XJDX_001)</td><td>86.27</td><td>91.18</td><td>81.37</td><td>86.21</td><td>86.33</td></tr>
+          <tr><td>Lenormand System</td><td>82.99</td><td>89.55</td><td>76.43</td><td>81.28</td><td>84.70</td></tr>
+          <tr><td>HER-DAC</td><td>81.61</td><td>93.05</td><td>70.16</td><td>81.70</td><td>81.52</td></tr>
+          <tr><td>ZZUNLP_Han</td><td>81.38</td><td>94.25</td><td>68.51</td><td>80.88</td><td>81.88</td></tr>
+          <tr><td>SUAT-NLP</td><td>79.01</td><td>91.02</td><td>67.00</td><td>80.88</td><td>77.13</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      First place with a <strong>3.28-point lead</strong>, almost all of it from Joint@3 (+4.94 over second).
+      Phase 1 and the blind Phase 2 differ by only <strong>0.12</strong>. For reference, prompting-only baselines
+      reach Phase-1 scores of 40.51 (GPT-5.4), 38.97 (Gemini 3.1 Pro) and 30.35 (Qwen3.6-Plus) — well below every
+      fine-tuned submission.
+    </p>
+  </section>
+
+  <section>
+    <h2>Citation</h2>
+    <div class="cite">
+      <button id="copy" type="button">Copy</button>
+<pre id="bib">@inproceedings{zhao2026dualfaith,
+  title     = {DualFaith at {NLPCC}-2026 Task 10: Faithfulness Verification
+               for Scientific Reports against Experimental Results and
+               Citation Evidence},
+  author    = {Zhao, Wenbiao and Shi, Longkun and Zuo, Zicheng and Tohti, Turdi},
+  booktitle = {Natural Language Processing and Chinese Computing (NLPCC 2026)},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer},
+  year      = {2026},
+  note      = {To appear}
+}</pre>
+    </div>
+  </section>
+
+  <footer>
+    Funded by the Xinjiang Talent Development Fund (Grant No. XJRC-2025-KJ-PY-KJLJ-051).<br>
+    Materials released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> ·
+    <a href="https://github.com/winbeau/DualFaith">github.com/winbeau/DualFaith</a>
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById('copy').addEventListener('click', function(){
+    var btn = this, text = document.getElementById('bib').textContent;
+    function done(ok){ btn.textContent = ok ? 'Copied' : 'Press ⌘C'; setTimeout(function(){ btn.textContent='Copy'; }, 1800); }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try { done(document.execCommand('copy')); } catch(e){ done(false); }
+      document.body.removeChild(ta);
+    }
+  });
+</script>
+</body>
+</html>
